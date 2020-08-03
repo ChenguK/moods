@@ -35,7 +35,8 @@
     </div>
     <div class="container">
         <div class="row card">
-            <h3>How's your mood today? Share below</h3>
+            <h3>How's your mood today?</h3>
+            <h4><a href="/new">Click here</a> to share!</h4>
             <div id="moods" class="col s12">
                 <% moods.forEach(function(mood) { %>
                 <div class="card blue-grey">
@@ -47,14 +48,17 @@
                             </span>
                         </div>
                         <ul class="collection">
-                            <% user.posts.forEach(function(post) { %>
-                            <li><%= post.text %></li>
+                            <% mood.posts.forEach(function(post) { %>
+                            <li><%= post.text %>
+                                <a href="/edit">Edit Post</a>
+                            </li>
                             <% }) %>
                         </ul>
 
                         <!-- Add Dynamic UI form below this line -->
                         <!-- if the user is logged and that user matches the id of the user, then they can add a fact about themselves.-->
-                        <%if (mood._id.equals(user && user._id)) { %>
+                        <!-- <
+                            %if (mood._id.equals(user && user._id)) { %>
                         <div class="card-action">
                             <form action="/posts" method="POST">
                                 <textarea type="text" name="text" class="white-text" rows="3" cols="80"
@@ -62,7 +66,8 @@
                                 <button type="submit" class="btn btn-info">share mood</button>
                             </form>
                         </div>
-                        <% } %>
+                        <
+                            % } %> -->
 
                     </div>
                 </div>
