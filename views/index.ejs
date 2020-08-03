@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
         integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
@@ -12,6 +14,24 @@
 
 
 <body class="container">
+    <nav class="navbar navbar-light" style="background-color: lightgrey;">
+        <form class="form-inline">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul>
+                <li text-style="none" style="color: white">
+                    <% if (user) { %>
+                    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                    <% } else { %>
+                    <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
+                    <% } %>
+                </li>
+            </ul>
+            </div>
+        </form>
+    </nav>
     <h1>Welcome to moods!</h1>
     <p>Are you in a mood?</p>
 

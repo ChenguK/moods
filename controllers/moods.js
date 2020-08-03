@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const Mood = require("../models/mood");
 
 module.exports = {
     index,
@@ -8,9 +8,9 @@ module.exports = {
 }
 
 function index(req, res) {
-    User.find({}, function (err, users) {
-        res.render("users/index", {
-            users,
+    Mood.find({}, function (err, moods) {
+        res.render("moods/index", {
+            moods,
             user: req.user
         });
     });
@@ -19,11 +19,12 @@ function index(req, res) {
 function newPost(req, res) {
     req.user.posts.push(req.body);
     req.user.save(function (err) {
-        res.redirect("/users");
+        res.redirect("/moods");
     });
 };
 
 function editPost(req, res) {
+
 
 };
 
