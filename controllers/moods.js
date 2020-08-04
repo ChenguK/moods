@@ -1,9 +1,13 @@
 const Mood = require("../models/mood");
+// const {
+//     post
+// } = require("../routes");
 
 module.exports = {
     index,
     create,
     newPost,
+    update,
     editPost,
     delPost,
 }
@@ -31,17 +35,51 @@ function newPost(req, res) {
     });
 };
 
-
 function editPost(req, res) {
-    Mood.findById(req.user.body, function (err, mood) {
-        if (!mood.user.equals(req.user._id)) return req.redirect('/moods');
-        res.render("/moods/edit", {
-            mood,
+    let user = req.user;
+    Mood.findOne({
+        "posts._id": req.params.id,
+    }, function (err, mood) {
+        const post = mood.posts.id(req.params.id);
+        if (!user.equals(req.user._id)) return res.redirect("/moods");
+        res.render("moods/edit", {
+            "moodId": req.params.id,
+            title: "Edit Mood",
+            post,
             user: req.user
         });
     });
-};
+}
+
+function update(req, res) {
+    let user = req.user;
+    Mood.findOne({
+            "posts._id": req.params.id
+        },
+        function (err, mood) {
+
+            const post = mood.posts.id(req.params.id);
+            if (!user.equals(req.user._id)) return req.redirect("/moods");
+            post.text = req.body.text;
+            // {$set: {post[0].text: }}
+            mood.save(function (err) {
+                res.redirect(`/moods`);
+            });
+        });
+}
 
 function delPost(req, res) {
-
-};
+    let user = req.user;
+    Mood.findOne({
+            "posts._id": req.params.id
+        },
+        function (err, mood) {
+            const post = mood.posts.id(req.params.id);
+            if (!user.equals(req.user._id)) return req.redirect("/moods");
+            req.user.posts.pop(req.body),
+                console.log();
+            req.user.save(function (err) {
+                res.redirect("/moods");
+            });
+        });
+}

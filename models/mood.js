@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
-    text: String
+    text: {
+        type: String
+    }
 }, {
     timestamps: true
 });
