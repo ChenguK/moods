@@ -51,7 +51,7 @@
                             <% mood.posts.forEach(function(post) { %>
                             <li><%= post.text %>
                                 <a href="moods/<%= mood.posts[0]._id %>/edit">Edit Post</a>
-                                <form action="/moods/<%= post._id %>?_method=DELETE" method="post">
+                                <form action="/moods/<%= post._id %>?_method=DELETE" method="POST">
                                     <button type="submit"></button>Delete Post</form>
 
 
