@@ -61,7 +61,6 @@ function update(req, res) {
             const post = mood.posts.id(req.params.id);
             if (!user.equals(req.user._id)) return req.redirect("/moods");
             post.text = req.body.text;
-            // {$set: {post[0].text: }}
             mood.save(function (err) {
                 res.redirect(`/moods`);
             });
@@ -76,9 +75,9 @@ function delPost(req, res) {
         function (err, mood) {
             const post = mood.posts.id(req.params.id);
             if (!user.equals(req.user._id)) return req.redirect("/moods");
-            req.user.posts.pop(req.body),
-                console.log();
-            req.user.save(function (err) {
+            post.remove();
+            // console.log(post);
+            mood.save(function (err) {
                 res.redirect("/moods");
             });
         });
