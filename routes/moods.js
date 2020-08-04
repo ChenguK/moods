@@ -4,10 +4,10 @@ const moodsCtrl = require('../controllers/moods');
 
 router.get("/moods", moodsCtrl.index);
 router.get("/new", isLoggedIn, moodsCtrl.newPost);
-router.get("/edit", isLoggedIn, moodsCtrl.editPost);
 router.post("/posts", isLoggedIn, moodsCtrl.create);
-router.put("/posts/:id", isLoggedIn, moodsCtrl.editPost);
-router.delete("/posts/:id", isLoggedIn, moodsCtrl.delPost);
+router.get("/moods/:id/edit", isLoggedIn, moodsCtrl.editPost);
+router.put("/moods/:id", isLoggedIn, moodsCtrl.update);
+router.delete("/moods/:id", isLoggedIn, moodsCtrl.delPost);
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

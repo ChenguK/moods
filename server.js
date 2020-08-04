@@ -1,27 +1,29 @@
-const express = require('express');
-const morgan = require('morgan');
-const session = require('express-session');
-const passport = require('passport');
+const express = require("express");
+const morgan = require("morgan");
+const session = require("express-session");
+const passport = require("passport");
+const methodOverride = require("method-override");
 const port = process.env.PORT || 3000;
 
-require('dotenv').config();
+require("dotenv").config();
 
 // create the Express app
 const app = express();
 
 // connect to the MongoDB with mongoose
-require('./config/database');
-require('./config/passport');
+require("./config/database");
+require("./config/passport");
 
 // require our routes
-const indexRoutes = require('./routes/index');
-const moodsRoutes = require('./routes/moods');
+const indexRoutes = require("./routes/index");
+const moodsRoutes = require("./routes/moods");
 
 // view engine setup
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
-app.use(express.static('public'));
-app.use(morgan('dev'));
+app.use(express.static("public"));
+app.use(methodOverride("_method"));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
@@ -36,8 +38,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRoutes);
-app.use('/', moodsRoutes);
+app.use("/", indexRoutes);
+app.use("/", moodsRoutes);
 
 app.listen(port, () => {
     console.log(`Express is listening on port:${port}`);
