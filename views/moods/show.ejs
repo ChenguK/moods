@@ -37,9 +37,14 @@
         </nav>
     </div>
     <a href="/moods">Dashboard</a>
-    <div><%= user.name %></div>
-    <div><%= mood.title %></div>
+    <br>
+    <br>
+
+    <div><b><%= user.name %></b></div>
+    <br>
+    <h4><u><%= mood.title %></u></h4>
     <div><%= mood.post %></div>
+    <a href="/moods/<%= mood._id %>/edit">Edit Post</a>
     <br>
     <div class="comments">
         <!-- <form action="/moods/<

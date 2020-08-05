@@ -6,17 +6,17 @@ module.exports = {
     // findMoods,
     newPost,
     create,
-    show
+    show,
+    editMood,
+    update
 }
 
 function index(req, res) {
-    var mood = req.mood;
-    var users = req.user;
-    User.find({}, function (err, user) {
+    // var users = req.user;
+    User.find({}, function (err, users) {
         res.render("moods/index", {
-            mood,
-            user: req,
-            user,
+            // mood,
+            user: req.user,
             users,
         })
     })
@@ -41,19 +41,47 @@ function create(req, res) {
     mood.save(function (err) {
         if (err) return render("/moods/new");
         // Going to moods show page
-        res.redirect(`/moods/${mood._id}`);
+        res.redirect(`/moods/${mood._id}`, {
+            user: req.user,
+            mood
+        });
     });
 }
 
 function show(req, res) {
-    let users = req.user;
+    let user = req.user;
+
     Mood.findById(req.params.id, function (err, mood) {
         if (!user._id) return res.redirect("/moods");
 
         res.render("moods/show", {
-            users,
+            user,
             user: req.user,
             mood
         })
     })
+}
+
+function editMood(req, res) {
+    var user = req.user;
+    Mood.findById(req.params.id, function (err, mood) {
+        if (!userId.equals(req.user._id)) return res.redirect("/moods");
+        res.render("moods/edit", {
+            mood
+        });
+
+    });
+}
+
+function update(req, res) {
+    Mood.findById(req.params.id, function (err, mood) {
+        if (!user.equals(req.user._id)) return req.redirect("/moods");
+        mood.post = req.body.text;
+        mood.save(function (err) {
+            res.redirect(`/moods`), {
+                user: req.user,
+                mood
+            };
+        });
+    });
 }

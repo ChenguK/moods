@@ -38,7 +38,7 @@
             <h3>How's your mood today?</h3>
             <h4><a href="/moods/new">Click here</a> to share!</h4>
             <div id="moods" class="col s12">
-                <% users.forEach(function(user) { %>
+                <% moods.forEach(function(mood) { %>
                 <div class="card blue-grey">
                     <div class="card-content white-text">
                         <div>
@@ -48,23 +48,21 @@
                             </span>
                         </div>
                         <ul class="collection">
-                            <% users.moods.forEach(function(mood) { %>
+                            <% mood.user.forEach(function(post) { %>
                             <li>
                                 <!-- <form action="/moods/<
                                     %= mood._id %>?_method=DELETE" method="POST">
                                     <button type="submit"></button>X</form> -->
-                                <%= post %>
-                                <!-- <a href="moods/<
-                                    %= mood._id %>/edit">Edit Post</a> -->
+                                <%= mood.post %>
+                                <a href="moods/<%= mood._id %>/edit">Edit Post</a>
                                 <!-- <a href="/moods/<
                                     %= mood._id%>">Comment</a> -->
                             </li>
-                            <% }) %> -->
+                            <!-- <% }) %> -->
                         </ul>
 
-                        Add Dynamic UI form below this line
-                        if the user is logged and that user matches the id of the user, then they can add a fact about
-                        themselves.-->
+                        <!-- Add Dynamic UI form below this line -->
+                        <!-- if the user is logged and that user matches the id of the user, then they can add a fact about themselves.-->
                         <%if (mood._id.equals(user && user._id)) { %>
                         <div class=" card-action">
                             <form action="/posts" method="POST">

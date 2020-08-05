@@ -2,18 +2,19 @@ const Mood = require("../models/mood");
 const User = require("../models/user");
 
 
+
 module.exports = {
     index,
     create,
     newPost,
-    // update,
-    // editPost,
+    update,
+    editPost,
     // delPost,
     show
 }
 
 function index(req, res) {
-    Mood.find({}, function (err, moods) {
+    Mood.find({}).populate("user").exec(function (err, moods) {
         res.render("moods/index", {
             moods,
             user: req.user
@@ -21,18 +22,10 @@ function index(req, res) {
     });
 }
 
-// function create(req, res) {
-//     req.user.posts.push(req.body);
-//     req.user.save(function (err) {
-//         res.redirect("/moods");
-//     });
-// }
-
 function create(req, res) {
     const mood = new Mood(req.body);
     // Assign the logged in user's id
-    mood.user = req.user._id;
-    req.user.moods.push(req.body);
+    mood.user.push(req.user._id);
     mood.save(function (err) {
 
         if (err) return render("/moods/new");
@@ -45,7 +38,7 @@ function create(req, res) {
 function newPost(req, res) {
     res.render("moods/new", {
         title: "New Mood",
-        user: req.body,
+        user: req.user,
     });
 };
 
@@ -66,38 +59,41 @@ function newPost(req, res) {
 //     });
 // }
 
-// **
-// function editPost(req, res) {
-//     Mood.findById(req.params.id, function (err, mood) {
-//         if (!mood.user.equals(req.user._id)) return res.redirect("/moods");
-//         res.render("moods/edit", {
-//             mood
-//         });
 
-//     });
-// }
+function editPost(req, res) {
+    var user = req.user;
+    Mood.findById(req.params.id, function (err, mood) {
+        if (!user.equals(req.user._id)) return res.redirect("/moods");
+        res.render("moods/edit", {
+            mood,
+            user: req.user
+        });
 
-
-// function update(req, res) {
-
-
-// let user = req.user;
-// Mood.findOne({
-//         "posts._id": req.params.id
-//     },
-//     function (err, mood) {
-
-//         const post = mood.posts.id(req.params.id);
+    });
+}
 
 
-//     Mood.findByIdAndUpdate(req.params.id, function (err, mood) {
-//         if (!user.equals(req.user._id)) return req.redirect("/moods");
-//         post.text = req.body.text;
-//         mood.save(function (err) {
-//             res.redirect(`/moods`);
-//         });
-//     });
-// }
+function update(req, res) {
+
+
+    // let user = req.user;
+    // Mood.findOne({
+    //         "posts._id": req.params.id
+    //     },
+    //     function (err, mood) {
+
+    //         const post = mood.posts.id(req.params.id);
+
+
+    Mood.findById(req.params.id, function (err, mood) {
+        var user = req.user;
+        if (!user.equals(req.user._id)) return req.redirect("/moods");
+        mood.post = req.body.text;
+        mood.save(function (err) {
+            res.redirect(`/moods`);
+        });
+    });
+}
 
 
 // function delPost(req, res) {
