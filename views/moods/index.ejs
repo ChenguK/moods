@@ -44,15 +44,16 @@
                         <div>
                             <span class="card-title">
                                 <i class="material-icons">perm_identity</i>
-                                <span class="mood-name"><%= user.name %></span>
+                                <span class="mood-name"><%= mood.user[0].name %></span>
                             </span>
                         </div>
                         <ul class="collection">
                             <% mood.user.forEach(function(post) { %>
                             <li>
-                                <!-- <form action="/moods/<
-                                    %= mood._id %>?_method=DELETE" method="POST">
-                                    <button type="submit"></button>X</form> -->
+                                <form action="/moods/<%= mood._id %>?_method=DELETE" method="POST">
+                                    <button type="submit" style=background-color:red>
+                                        <small>X</small>
+                                    </button></form>
                                 <%= mood.post %>
                                 <a href="moods/<%= mood._id %>/edit">Edit Post</a>
                                 <!-- <a href="/moods/<
