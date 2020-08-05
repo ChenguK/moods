@@ -18,7 +18,7 @@ passport.use(new GoogleStrategy({
                 // new student, create and add them to our database!!!
                 const newMood = new Mood({
                     name: profile.displayName,
-                    emaile: profile.emails[0].value,
+                    // email: profile.emails[0].value,
                     googleId: profile._id
                 })
                 newMood.save(function (err) {

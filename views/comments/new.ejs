@@ -36,36 +36,25 @@
             </form>
         </nav>
     </div>
-    <div class="container">
-        <div class="row">
-            <div id="moods" class="col s12">
-                <!-- <
-                    % .forEach(function(mood) { %> -->
-                <div class="card blue-grey">
-                    <div class="card-content white-text">
-                        <div>
-                            <span class="card-title">
-                                <i class="material-icons">perm_identity</i>
-                                <span class="mood-name"><%= user.name %></span>
-                            </span>
-                        </div>
-                        <form action="" method="post"></form>
-                        <!-- if the user is logged and that user matches the id of the user, then they can add a fact about themselves.-->
-                        <%if (user._id.equals(user && user._id)) { %>
-                        <div class="card-action">
-                            <!-- <form action="/moods" method="PUT"> -->
+    <div><%= user.name %></div>
+    <div><%= mood.posts[0].text %></div>
+    <br>
+    <div class="comments">
+        <form action="/moods/<%= mood._id %>/comments" method="POST">
+            <label>Comments
+                <input type="text" name="comments" id="">
+                <input type="submit">
+            </label>
+        </form>
 
-                            <form action="/moods/<%= post._id %>?_method=PUT" method="POST">
-                                <textarea type="text" name="text" class="white-text" rows="3" cols="80"
-                                    value="<%= post.text %>"></textarea>
-                                <button type="submit" class="btn btn-info">Edit Post</button>
-                            </form>
-                            <!-- </form> -->
-                        </div>
-                        <% } %>
-                        <!-- <
-                            %  }) %> -->
+        <ul>
+            <% if(mood.comments.length) { %>
+            <%- mood.comments.map(c =>
+          `<li>${c.name} ${c.comment}</li>`
+          ).join('')%>
+        </ul>
+    </div>
 
-</body>
-
-</html>
+    <% } else { %>
+    <h3> No Comments Yet</h3>
+    <% } %>
