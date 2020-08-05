@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const commentCtrl = require("../controllers/comments");
+const commentsCtrl = require("../controllers/comments");
 
-router.post("/moods/:id/comments", isLoggedIn, commentCtrl.create);
-router.get("/moods/:id", commentCtrl.show);
+router.post("/moods/:id/comments", isLoggedIn, commentsCtrl.create);
+router.get("/moods/:id", commentsCtrl.show);
 
 
 function isLoggedIn(req, res, next) {

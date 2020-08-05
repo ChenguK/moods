@@ -2,6 +2,7 @@ const Mood = require("../models/mood");
 const Comment = require("../models/comment");
 
 
+
 module.exports = {
     show,
     create,
@@ -13,34 +14,37 @@ module.exports = {
 
 function create(req, res) {
     let user = req.user;
+
     // const post = mood.posts.id(req.params.id);
     // Update req.body to contain user info
     req.body.userId = req.user._id;
     req.body.userName = req.user.name;
+    req.body.mood = req.params.id;
     // Add the comment
-    mood.comments.push(req.body);
-    console.log(req.body);
-    mood.save(function (err) {
+    Comment.create(req.body, function (err, comments) {
+        // mood.comments.push(req.body);
+        // mood.save(function (err) {
+        if (err) return res.redirect(`/moods/${req.params.id}`)
         console.log("error is" + err);
-        res.redirect(`/moods/${mood._id}`,
-            user = req.user,
-            moods,
-            comments,
-        );
+        res.redirect(`/moods/${req.params.id}`, {
+            user: req.user,
+            // moods,
+            // comments: mood.comments
+        });
 
     })
 };
 
 function show(req, res) {
     let user = req.user;
-    Mood.findById(req.params.id, function (err, mood) {
-        if (!user._id) return res.redirect("/moods");
+    Comment.find({}).req.params.id.populate("moods").exec(function (err, comments) {
+        if (err) return res.redirect("/moods");
         res.render("moods/show", {
             user,
             mood,
-            comments
-        })
-    })
+            comments: mood.comments
+        });
+    });
 }
 
 // function addToPost(req, res) {

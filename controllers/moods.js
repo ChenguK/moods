@@ -85,7 +85,7 @@ function show(req, res) {
         res.render("moods/show", {
             user,
             mood,
-            comment: req.comment
+            comments: mood.comments
         })
     })
 }

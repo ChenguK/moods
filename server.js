@@ -18,7 +18,7 @@ require("./config/passport");
 const indexRoutes = require("./routes/index");
 const moodsRoutes = require("./routes/moods");
 const userRoutes = require("./routes/users");
-const commentRoutes = require("./routes/comments");
+const commentsRoutes = require("./routes/comments");
 
 
 // view engine setup
@@ -48,7 +48,7 @@ app.use(function (req, res, next) {
 app.use("/", indexRoutes);
 app.use("/", moodsRoutes);
 app.use("/", userRoutes);
-app.use("/", commentRoutes);
+app.use("/", commentsRoutes);
 
 
 
