@@ -46,9 +46,10 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", indexRoutes);
+app.use("/", commentsRoutes);
 app.use("/", moodsRoutes);
 app.use("/", userRoutes);
-app.use("/", commentsRoutes);
+
 
 
 
