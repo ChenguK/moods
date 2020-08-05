@@ -3,16 +3,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const moodSchema = new Schema({
-    name: String,
-    posts: String,
+    title: String,
+    name: [{
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        },
+    }],
+    post: String,
     comments: {
         type: Schema.Types.ObjectId,
         ref: "Comment"
     },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
+
 }, {
     timestamps: true
 });
