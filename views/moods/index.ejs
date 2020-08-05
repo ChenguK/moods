@@ -49,17 +49,18 @@
                         </div>
                         <ul class="collection">
                             <% mood.user.forEach(function(post) { %>
+
                             <li>
+                                <h5><%= mood.title %></h5>
                                 <form action="/moods/<%= mood._id %>?_method=DELETE" method="POST">
-                                    <button type="submit" style=background-color:red>
-                                        <small>X</small>
-                                    </button></form>
+                                    <small><button type="submit" style=background-color:red>
+                                            X
+                                        </button></small></form>
                                 <%= mood.post %>
                                 <a href="moods/<%= mood._id %>/edit">Edit Post</a>
-                                <!-- <a href="/moods/<
-                                    %= mood._id%>">Comment</a> -->
+                                <a href="/moods/<%= mood._id%>">Comment</a>
                             </li>
-                            <!-- <% }) %> -->
+                            <% }) %>
                         </ul>
 
                         <!-- Add Dynamic UI form below this line -->

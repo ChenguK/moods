@@ -9,10 +9,10 @@ const moodSchema = new Schema({
         ref: "User"
     }],
     post: String,
-    comments: {
+    comments: [{
         type: Schema.Types.ObjectId,
         ref: "Comment"
-    },
+    }],
 
 }, {
     timestamps: true

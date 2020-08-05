@@ -1,5 +1,5 @@
 const Mood = require("../models/mood");
-const User = require("../models/user");
+const Comment = require("../models/comment");
 
 
 
@@ -84,7 +84,8 @@ function show(req, res) {
         if (!user._id) return res.redirect("/moods");
         res.render("moods/show", {
             user,
-            mood
+            mood,
+            comment: req.comment
         })
     })
 }
