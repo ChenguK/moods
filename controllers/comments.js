@@ -13,32 +13,41 @@ module.exports = {
 
 
 function create(req, res) {
-    let user = req.user;
-
-    // const post = mood.posts.id(req.params.id);
+    // let user = req.user;
     // Update req.body to contain user info
     req.body.userId = req.user._id;
-    req.body.userName = req.user.name;
-    req.body.mood = req.params.id;
-    // Add the comment
-    Comment.create(req.body, function (err, comments) {
-        // mood.comments.push(req.body);
-        // mood.save(function (err) {
-        if (err) return res.redirect(`/moods/${req.params.id}`)
-        console.log("error is" + err);
-        res.redirect(`/moods/${req.params.id}`, {
-            user: req.user,
-            // moods,
-            // comments: mood.comments
-        });
+    // req.body.userName = req.user.name;
+    req.body.moodId = req.params.id;
+    req.body.comment = req.body.comment;
+    // Find the comment
+    Mood.findById(req.params.id, (function (err, mood) {
+        // Make the comment and then save it.
+        const comment = new Comment(req.body);
+        comment.save(function (err) {
+            // save this comments Id to your own model
+            mood.comments.push(comment._id);
+            mood.save(function (err) {
+                if (err) return res.redirect(`/moods/${req.params.id}`)
 
-    })
-};
+                res.redirect(`/moods/${req.params.id}`);
+            })
+
+        })
+    }));
+}
 
 function show(req, res) {
     let user = req.user;
-    Comment.find({}).req.params.id.populate("moods").exec(function (err, comments) {
+    if (!user) return res.redirect("/moods");
+    Mood.findById(req.params.id).populate({
+        path: "comments",
+        populate: {
+            path: "userId"
+        }
+    }).exec(function (err, mood) {
+        console.log(mood);
         if (err) return res.redirect("/moods");
+
         res.render("moods/show", {
             user,
             mood,
