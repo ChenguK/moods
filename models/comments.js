@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
 
-const commentSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    avatar: String,
+const commentSchema = new Schema({
     comment: {
         text: String,
     },
-    googleId: String,
+
+    moodsId: [{
+        type: Schema.Types.ObjectId,
+        ref: "Mood"
+    }]
 }, {
     timestamps: true,
 });

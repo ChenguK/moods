@@ -1,7 +1,4 @@
 const Mood = require("../models/mood");
-// const {
-//     post
-// } = require("../routes");
 
 module.exports = {
     index,
@@ -10,6 +7,7 @@ module.exports = {
     update,
     editPost,
     delPost,
+    show
 }
 
 function index(req, res) {
@@ -74,11 +72,26 @@ function delPost(req, res) {
         },
         function (err, mood) {
             const post = mood.posts.id(req.params.id);
-            if (!user.equals(req.user._id)) return req.redirect("/moods");
+            if (!user.equals(req.user._id)) return res.redirect("/moods");
             post.remove();
-            // console.log(post);
             mood.save(function (err) {
                 res.redirect("/moods");
             });
         });
+}
+
+function show(req, res) {
+    let user = req.user;
+    Mood.findOne({
+            "posts._id": req.params.id
+        },
+        function (err, mood) {
+            const post = mood.posts.id(req.params.id);
+            if (!user) return res.redirect("/moods");
+
+            res.render("comments/new", {
+                user,
+                mood
+            })
+        })
 }

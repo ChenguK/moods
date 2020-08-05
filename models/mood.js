@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-    text: {
-        type: String
-    }
-}, {
-    timestamps: true
-});
+const Schema = mongoose.Schema;
 
-const moodSchema = new mongoose.Schema({
+const moodSchema = new Schema({
     name: String,
-    email: String,
-    avatarURL: String,
-    posts: [postSchema],
-    googleId: String
+    posts: String,
+    comments: {
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
 }, {
     timestamps: true
 });

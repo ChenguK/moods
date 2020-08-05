@@ -49,10 +49,13 @@
                         </div>
                         <ul class="collection">
                             <% mood.posts.forEach(function(post) { %>
-                            <li><%= post.text %>
-                                <a href="moods/<%= mood.posts[0]._id %>/edit">Edit Post</a>
+                            <li>
                                 <form action="/moods/<%= post._id %>?_method=DELETE" method="POST">
-                                    <button type="submit"></button>Delete Post</form>
+                                    <button type="submit"></button>X</form>
+                                <%= post.text %>
+                                <a href="moods/<%= mood.posts[0]._id %>/edit">Edit Post</a>
+                                <a href="/moods/<%= mood.posts[0]._id%>">Comment</a>
+
 
 
                             </li>

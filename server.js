@@ -17,6 +17,7 @@ require("./config/passport");
 // require our routes
 const indexRoutes = require("./routes/index");
 const moodsRoutes = require("./routes/moods");
+const commentRoutes = require("./routes/comments");
 
 // view engine setup
 app.set("view engine", "ejs");
@@ -40,6 +41,7 @@ app.use(passport.session());
 
 app.use("/", indexRoutes);
 app.use("/", moodsRoutes);
+app.use("/", commentRoutes);
 
 app.listen(port, () => {
     console.log(`Express is listening on port:${port}`);
