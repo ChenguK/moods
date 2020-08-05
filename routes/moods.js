@@ -8,7 +8,7 @@ router.post("/moods", isLoggedIn, moodsCtrl.create);
 router.get("/moods/:id", isLoggedIn, moodsCtrl.show);
 router.get("/moods/:id/edit", isLoggedIn, moodsCtrl.editPost);
 router.put("/moods/:id", isLoggedIn, moodsCtrl.update);
-// router.delete("/moods/:id", isLoggedIn, moodsCtrl.delPost);
+router.delete("/moods/:id", isLoggedIn, moodsCtrl.delPost);
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

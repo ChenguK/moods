@@ -9,7 +9,7 @@ module.exports = {
     newPost,
     update,
     editPost,
-    // delPost,
+    delPost,
     show
 }
 
@@ -42,24 +42,6 @@ function newPost(req, res) {
     });
 };
 
-// **
-// function editPost(req, res) {
-//     let user = req.user;
-//     Mood.findOne({
-//         "posts._id": req.params.id,
-//     }, function (err, mood) {
-//         const post = mood.posts.id(req.params.id);
-//         if (!user.equals(req.user._id)) return res.redirect("/moods");
-//         res.render("moods/edit", {
-//             "moodId": req.params.id,
-//             title: "Edit Mood",
-//             post,
-//             user: req.user
-//         });
-//     });
-// }
-
-
 function editPost(req, res) {
     var user = req.user;
     Mood.findById(req.params.id, function (err, mood) {
@@ -74,17 +56,6 @@ function editPost(req, res) {
 
 
 function update(req, res) {
-
-
-    // let user = req.user;
-    // Mood.findOne({
-    //         "posts._id": req.params.id
-    //     },
-    //     function (err, mood) {
-
-    //         const post = mood.posts.id(req.params.id);
-
-
     Mood.findById(req.params.id, function (err, mood) {
         var user = req.user;
         if (!user.equals(req.user._id)) return req.redirect("/moods");
@@ -96,25 +67,16 @@ function update(req, res) {
 }
 
 
-// function delPost(req, res) {
-
-
-// let user = req.user;
-// Mood.findOne({
-//         "posts._id": req.params.id
-//     },
-//     function (err, mood) {
-//         const post = mood.posts.id(req.params.id);
-
-
-//     Mood.findById(req.params.id, function (err, mood) {
-//         if (!user.equals(req.user._id)) return res.redirect("/moods");
-//         post.remove();
-//         mood.save(function (err) {
-//             res.redirect("/moods");
-//         });
-//     });
-// }
+function delPost(req, res) {
+    var user = req.user;
+    Mood.findById(req.params.id, function (err, mood) {
+        if (!user.equals(req.user._id)) return res.redirect("/moods");
+        mood.remove();
+        mood.save(function (err) {
+            res.redirect("/moods");
+        });
+    });
+}
 
 function show(req, res) {
     let user = req.user;
