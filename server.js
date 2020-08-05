@@ -17,7 +17,9 @@ require("./config/passport");
 // require our routes
 const indexRoutes = require("./routes/index");
 const moodsRoutes = require("./routes/moods");
+const userRoutes = require("./routes/users");
 const commentRoutes = require("./routes/comments");
+
 
 // view engine setup
 app.set("view engine", "ejs");
@@ -38,10 +40,17 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function (req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
 
 app.use("/", indexRoutes);
-app.use("/", moodsRoutes);
+app.use("/", userRoutes);
 app.use("/", commentRoutes);
+app.use("/moods", moodsRoutes);
+
+
 
 app.listen(port, () => {
     console.log(`Express is listening on port:${port}`);

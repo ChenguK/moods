@@ -36,11 +36,14 @@
             </form>
         </nav>
     </div>
+    <a href="/moods">Dashboard</a>
     <div><%= user.name %></div>
-    <div><%= mood.posts[0].text %></div>
+    <div><%= mood.title %></div>
+    <div><%= mood.post %></div>
     <br>
     <div class="comments">
-        <form action="/moods/<%= mood._id %>/comments" method="POST">
+        <!-- <form action="/moods/<
+            %= mood._id %>/comments" method="POST">
             <label>Comments
                 <input type="text" name="comments" id="">
                 <input type="submit">
@@ -48,13 +51,17 @@
         </form>
 
         <ul>
-            <% if(mood.comments.length) { %>
-            <%- mood.comments.map(c =>
+            <
+                % if(mood.comments.length) { %>
+            <
+                %- mood.comments.map(c =>
           `<li>${c.name} ${c.comment}</li>`
           ).join('')%>
         </ul>
     </div>
 
-    <% } else { %>
+    <
+        % } else { %>
     <h3> No Comments Yet</h3>
-    <% } %>
+    <
+        % } %> -->
