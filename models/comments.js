@@ -6,10 +6,10 @@ const commentSchema = new Schema({
     comment: {
         text: String,
     },
-    // moodsId: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Mood"
-    // },
+    moodsId: {
+        type: Schema.Types.ObjectId,
+        ref: "Mood"
+    },
     UserId: {
         type: Schema.Types.ObjectId,
         ref: "User"

@@ -4,11 +4,9 @@ const Schema = mongoose.Schema;
 
 const moodSchema = new Schema({
     title: String,
-    name: [{
-        userId: {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        },
+    user: [{
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }],
     post: String,
     comments: {
