@@ -17,10 +17,9 @@
     <div class="navbar-fixed">
         <nav class="navbar navbar-light" style="background-color: lightgrey;">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <ul>
+                <h2>Welcome <%= user.name %>!</h2>
                 <li style="color: white text-style='none'">
                     <% if (user) { %>
                     <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
@@ -28,6 +27,7 @@
                     <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
                     <% } %>
                 </li>
+
             </ul>
     </div>
     </form>
@@ -52,15 +52,14 @@
                             <% mood.user.forEach(function(post) { %>
 
                             <li>
-                                <h5><%= mood.title %></h5>
+                                <h5><%= mood.title %></h5><a href="/moods/<%= mood._id%>">Comments</a>
+                                <%if (mood.user[0]._id.equals(user && user._id)) { %>
                                 <form action="/moods/<%= mood._id %>?_method=DELETE" method="POST">
                                     <small><button type="submit" style=background-color:red>
                                             X
-                                        </button></small></form>
-                                <!-- <
-                                    %= mood.post %> -->
-                                <a href="moods/<%= mood._id %>/edit">✏️</a>
-                                <a href="/moods/<%= mood._id%>">Comments</a>
+                                        </button></small></form><a href="moods/<%= mood._id %>/edit">✏️</a>
+                                <% } %>
+
                             </li>
                             <% }) %>
                         </ul>
