@@ -7,10 +7,6 @@ const userSchema = new Schema({
     email: String,
     avatar: String,
     googleId: String,
-    // moodId = {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Mood"
-    // }
 }, {
     timestamps: true,
 });

@@ -35,9 +35,13 @@ function create(req, res) {
 }
 
 function newPost(req, res) {
+    var users = req.user;
+    var mood = req.mood;
     res.render("moods/new", {
         title: "New Mood",
+        mood,
         user: req.user,
+        users
     });
 };
 
@@ -79,17 +83,22 @@ function delPost(req, res) {
 
 function show(req, res) {
     let user = req.user;
-    Mood.findById(req.params.id).populate({
-        path: "moods",
-        populate: {
-            path: "userId"
-        }
-    }).exec(function (err, mood) {
-        if (!user._id) return res.redirect("/moods");
-        res.render("moods/show", {
-            user,
-            mood,
-            comments: mood.comments
+    Mood.findById(req.params.id)
+        .populate({
+            path: "comments",
+            model: "Comment",
+            populate: {
+                path: "userId",
+                model: "User",
+            }
         })
-    })
+        .exec(function (err, mood) {
+            console.log(mood);
+            if (!user._id) return res.redirect("/moods");
+            res.render("moods/show", {
+                user,
+                mood,
+                comments: mood.comments
+            })
+        })
 }

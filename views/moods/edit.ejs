@@ -42,13 +42,13 @@
                 <!-- <
                     % .forEach(function(mood) { %> -->
                 <div class="card blue-grey">
+                    <a href="/moods">Dashboard</a>
                     <div class="card-content white-text">
                         <div>
                             <span class="card-title">
                                 <h4>Edit "<%= mood.title %>"</h4>
-                                <h5>Edit "<%= mood.post %>"</h5>
                                 <i class="material-icons">perm_identity</i>
-                                <span class="mood-name"><%= user.name %></span>
+                                <span class="mood-name"><%= mood.user  %></span>
                             </span>
                         </div>
 
@@ -57,10 +57,11 @@
                         <div class="card-action">
 
                             <form action="/moods/<%= mood._id %>?_method=PUT" method="POST">
-                                <label placeholder="<%= mood.card-title %>">Title
+                                <label> Title <input value="<%= mood.title %>" type="text" name="title">
                                 </label>
-                                <textarea type="text" name="text" class="white-text" rows="3" cols="80"
-                                    placeholder="<%= mood.post %>"></textarea>
+                                <br>
+                                <textarea type="text" name="text" class="white-text" rows="3"
+                                    cols="80"><%= mood.post %></textarea>
                                 <button type="submit" class="btn btn-info">Edit Post</button>
                             </form>
 

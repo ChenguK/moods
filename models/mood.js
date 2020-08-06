@@ -13,7 +13,7 @@ const moodSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Comment"
     }],
-
+    // inputFile: String
 }, {
     timestamps: true
 });
