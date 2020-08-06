@@ -29,7 +29,6 @@ function create(req, res) {
     mood.save(function (err) {
 
         if (err) return render("/moods/new");
-        console.log(mood);
         // Going to moods show page
         res.redirect(`/moods/${mood._id}`);
     });
@@ -80,7 +79,12 @@ function delPost(req, res) {
 
 function show(req, res) {
     let user = req.user;
-    Mood.findById(req.params.id, function (err, mood) {
+    Mood.findById(req.params.id).populate({
+        path: "moods",
+        populate: {
+            path: "userId"
+        }
+    }).exec(function (err, mood) {
         if (!user._id) return res.redirect("/moods");
         res.render("moods/show", {
             user,
