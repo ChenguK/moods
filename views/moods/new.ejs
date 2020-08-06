@@ -42,8 +42,10 @@
 
                 <div class="card blue-grey">
                     <div class="card-content white-text">
+                        <a href="/moods">Dashboard</a>
                         <div>
                             <span class="card-title">
+                              
                                 <i class="material-icons">perm_identity</i>
                                 <span class="mood-name"><%= user.name %></span>
                             </span>
@@ -55,8 +57,21 @@
                                 <label>Topic
                                     <input type="text" name="title">
                                 </label>
+                                <br>
                                 <textarea type="text" name="post" class="white-text" rows="3" cols="80"
                                     placeholder="How do you feel"></textarea>
                                 <button type="submit" class="btn btn-info">share mood</button>
                             </form>
+                            <!-- <h4>Upload Picture</h4>
+                            <form action="/" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="inputFile">
+                                <input type="submit" value="Upload file" class="btn btn-info">
+                            </form> -->
+                            <!-- <
+                                % if(recentUpload) { %>
+                                <h2>Most Recent Upload:</h2>
+                                <img src="<
+                                    %= recentUpload %>" alt="Recent Upload">
+                              <
+                                  % } %> -->
                         </div>

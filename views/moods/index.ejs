@@ -36,6 +36,7 @@
     <div class="container">
         <div class="row card">
             <h3>How's your mood today?</h3>
+
             <h4><a href="/moods/new">Click here</a> to share!</h4>
             <div id="moods" class="col s12">
                 <% moods.forEach(function(mood) { %>
@@ -56,9 +57,10 @@
                                     <small><button type="submit" style=background-color:red>
                                             X
                                         </button></small></form>
-                                <%= mood.post %>
-                                <a href="moods/<%= mood._id %>/edit">Edit Post</a>
-                                <a href="/moods/<%= mood._id%>">Comment</a>
+                                <!-- <
+                                    %= mood.post %> -->
+                                <a href="moods/<%= mood._id %>/edit">✏️</a>
+                                <a href="/moods/<%= mood._id%>">Comments</a>
                             </li>
                             <% }) %>
                         </ul>

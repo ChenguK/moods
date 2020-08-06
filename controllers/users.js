@@ -5,6 +5,7 @@ module.exports = {
     index,
     // findMoods,
     newPost,
+    new: newMood,
     create,
     show,
     editMood,
@@ -22,18 +23,27 @@ function index(req, res) {
     })
 }
 
+function create(req, res) {
+    if (user.name === userId);
+    User.createUser(googleId);
+    res.render("moods");
+
+
+}
+
 function newPost(req, res) {
-    var users = req.user;
+    var users = user.name;
     var mood = req.mood;
+
     res.render("moods/new", {
         title: "New Mood",
         mood,
-        user: req.user,
+        user: user.name,
         users
     });
 };
 
-function create(req, res) {
+function newMood(req, res) {
     var user = req.user;
     const mood = new Mood(req.body);
     // Assign the logged in user's id
@@ -65,7 +75,7 @@ function show(req, res) {
 function editMood(req, res) {
     var user = req.user;
     Mood.findById(req.params.id, function (err, mood) {
-        if (!userId.equals(req.user._id)) return res.redirect("/moods");
+        if (!mood.userId.equals(req.user._id)) return res.redirect("/moods");
         res.render("moods/edit", {
             mood
         });

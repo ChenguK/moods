@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
                 const newUser = new User({
                     name: profile.displayName,
                     emaile: profile.emails[0].value,
-                    googleId: profile._id
+                    googleId: profile.id
                 })
                 newUser.save(function (err) {
                     if (err) return cb(err);

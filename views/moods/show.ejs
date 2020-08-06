@@ -41,37 +41,52 @@
     <br>
 
     <div><b><%= mood.userId %></b></div>
+    <span class="mood-name"><%= mood.userId %></span>
     <br>
     <h4><u><%= mood.title %></u></h4>
     <div><%= mood.post %></div>
     <!-- <
-        %if (mood.userId.equals(user && user._id)) { %> -->
+        %if (mood.user.equals(user && user._id)) { %> -->
     <a href="/moods/<%= mood._id %>/edit">Edit Post</a>
+    <!-- <
+        % if(recentUpload) { %>
+        <h2>Most Recent Upload:</h2>
+        <img src="<
+            %= recentUpload %>" alt="Recent Upload">
+      <
+          % } %> -->
+    <!-- <div><img src="<
+        %= image %>"></div> -->
     <!-- <
         % } %> -->
     <br>
     <div class="comments">
-        <form action="/moods/<%= comments._id %>/comments" method="POST">
+        <form action="/moods/<%= mood._id%>/comments" method="POST">
             <label>Comments
                 <input type="text" name="comment">
                 <input type="submit">
             </label>
         </form>
 
+
         <ul>
             <% if(comments.length) { %>
-            <%- comments.map(c =>
-          `<li>${c.userId.name} ${c.comment}`
-          ).join('')%>
-            <form action="/moods/<%= mood._id %>?_method=DELETE" method="POST">
-                <small><button type="submit" style=background-color:red>
-                        X
-                    </button></small></form>
-            </li>
+            <% comments.forEach(c => { %>
+            <!-- <
+                %- comments.map(c => { -%> -->
+            <li><%= c.userId.name %> <%= c.comment %></li>
+            <!-- <form action="/moods/<
+                %= mood._id %>/comments/<
+                    %= c._id %>?_method=DELETE" method="POST">
+                <small><button type="submit" style=background-color:red>X</button></small>
+            </form> -->
+            <!-- .join('') -->
+            <% }) %>
+
 
         </ul>
-    </div>
 
-    <% } else { %>
-    <h3> No Comments Yet</h3>
-    <% } %>
+        <% } else { %>
+        <h3> No Comments Yet</h3>
+        <% } %>
+    </div>
