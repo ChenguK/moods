@@ -6,9 +6,8 @@ const Comment = require("../models/comment");
 module.exports = {
     show,
     create,
-    update,
     // addToPost,
-    delCommment
+    delComment
 };
 
 
@@ -56,25 +55,21 @@ function show(req, res) {
     });
 }
 
-// function addToPost(req, res) {
-//     let user = req.user;
-//     Mood.findOne({
-//             "posts._id": req.params.id
-//         },
-//         function (err, mood) {
 
-//             const post = mood.posts.id(req.params.id);
-
-//         })
-
-// }
-
-function update(req, res) {
-
-}
-
-
-
-function delCommment(req, res) {
-
-}
+function delComment(req, res) {
+    var user = req.user;
+    // query on the property of the comment
+    Mood.findOne({
+        "comments._id": req.params.id
+    }, function (err, mood) {
+        // Find the comment subdoc using the id method on Mongoose arrays
+        const comment = mood.comments.id(req.params.id);
+        // Ensure that the comment was created by the logged in user
+        if (!comment.user.equals(req.user._id)) return res.redirect(`/moods/${mood._id}`);
+        // Remove the comment using the remove method of the subdoc
+        comment.remove();
+        mood.save(function (err) {
+            res.redirect(`/moods/${mood._id}`);
+        })
+    });
+};
