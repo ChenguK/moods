@@ -45,20 +45,18 @@
     <br>
     <h4><u><%= mood.title %></u></h4>
     <div><%= mood.post %></div>
-    <!-- <
-        %if (mood.user.equals(user && user._id)) { %> -->
+    <%if (mood.user[0]._id.equals(user && user._id)) { %>
     <a href="/moods/<%= mood._id %>/edit">Edit Post</a>
     <!-- <
         % if(recentUpload) { %>
         <h2>Most Recent Upload:</h2>
         <img src="<
-            %= recentUpload %>" alt="Recent Upload">
-      <
-          % } %> -->
-    <!-- <div><img src="<
+            %= recentUpload %>" alt="Recent Upload"> -->
+    <% } %>
+
+    <!--<div><img src="<
         %= image %>"></div> -->
-    <!-- <
-        % } %> -->
+    <!-- < % } %> -->
     <br>
     <div class="comments">
         <form action="/moods/<%= mood._id%>/comments" method="POST">
@@ -67,25 +65,12 @@
                 <input type="submit">
             </label>
         </form>
-
-
         <ul>
             <% if(comments.length) { %>
             <% comments.forEach(c => { %>
-            <!-- <
-                %- comments.map(c => { -%> -->
             <li><%= c.userId.name %> <%= c.comment %></li>
-            <!-- <form action="/moods/<
-                %= mood._id %>/comments/<
-                    %= c._id %>?_method=DELETE" method="POST">
-                <small><button type="submit" style=background-color:red>X</button></small>
-            </form> -->
-            <!-- .join('') -->
             <% }) %>
-
-
         </ul>
-
         <% } else { %>
         <h3> No Comments Yet</h3>
         <% } %>
