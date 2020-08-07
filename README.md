@@ -97,7 +97,7 @@ The way I initially created my ERD (pictured below) and my models nested my data
 
 In the future, I would like to add in the functions that I set out to include:
 
-1. I would like the user to be able to add a gif to their post to exemplify their mood. There just wasn't enough to look into that option.
+1. I would like the user to be able to add a gif to their post to exemplify their mood. There just wasn't enough time to look into that option.
 
 2. I would like the user to be able to upload a picture to exemplify their experience if they feel the community might need that to understand their situation
 
