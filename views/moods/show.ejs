@@ -40,7 +40,6 @@
     </div>
 
     <div id="moods" class="contenteditable">
-        <div><b><%= mood.user[0].name %></b></div>
         <img src="<%= mood.user[0].avatarURL %>" alt="user profile" width="50px" height="50px">
         <div class="mood-name"><%= mood.user[0].name %></div>
         <br>
@@ -48,16 +47,7 @@
         <div><%= mood.post %></div>
         <%if (mood.user[0]._id.equals(user && user._id)) { %>
         <a href="/moods/<%= mood._id %>/edit">✏️</a>
-        <!-- <
-        % if(recentUpload) { %>
-        <h2>Most Recent Upload:</h2>
-        <img src="<
-            %= recentUpload %>" alt="Recent Upload"> -->
-        <% } %>
 
-        <!--<div><img src="<
-        %= image %>"></div> -->
-        <!-- < % } %> -->
         <div class="comments">
             <form action="/moods/<%= mood._id%>/comments" method="POST">
                 <label style="color: black">Comments

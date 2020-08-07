@@ -92,7 +92,7 @@ function show(req, res) {
             path: "comments",
             model: "Comment",
             populate: {
-                path: "userId",
+                path: "user",
                 model: "User",
             }
         })
