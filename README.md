@@ -18,6 +18,52 @@ I was inspired by conversations I've had with classmates who needed a person who
 
 ![Wireframe 3](./images/Wireframe-Page3.png)
 
+# ERD Diagrams
+
+![Initial ERD](./images/ERD-Diagram.png)
+
+![Updated ERD](./images/Updated-ERD-Diagram.png)
+
+# Trello Board
+
+![Trello Board](./images/Trello-Board.png)
+
+# App Screenshots
+
+![Login Page](./images/Login-Page.png)
+
+![Dashboard](./images/Dashboard.png)
+
+![Edit Page](./images/Edit-Page.png)
+
+![New Mood Page](./images/New-Page.png)
+
+# Live Site
+
+[Link to App](https://moodsblog.herokuapp.com/) to open app in browser.
 
 
+# Technologies
+
+* HTML
+* CSS
+* Javascript
+* Bootstrap
+* EJS
+* Express
+* Nodejs
+* Mongoose
+* Google People Api
+* Google Oath
+* MongoDB
+* Heroku
+
+# Unsolved Problems
+
+I was able to have full CRUD functionality on my moods (posts), but was not able to add the same functionality to my comments. I planned on 
+
+
+
+
+# Future Enhancements
 
