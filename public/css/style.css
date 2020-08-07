@@ -5,6 +5,9 @@
 body {
     margin-top: 40px;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 ul,
@@ -181,4 +184,8 @@ div.icons,
 
 .dashboardbtn:hover {
     background-color: rgb(99, 133, 185);
+}
+
+.dashboardbtn-show:hover {
+    background-color: white;
 }
