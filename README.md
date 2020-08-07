@@ -17,7 +17,7 @@ Within my vision for the app- the vision being building a community in a series 
 
 # Resolved Problem
 
-The way I initially created my ERD (pictured below) and my models nested my data so much that accessing even the most basic information was difficutlt. It required every function to be incredibly intricate and long to access and change anything. One of our instructors taught me how to refactor my ERD and models to make my information more easily accessible. Which did mean I had to start over, but in the process, I learned so much more about how each part of the server communicated with each other part. So I am incredibly grateful for that setback. And that instructor.
+The way I initially created my ERD (pictured below) and my models nested my data so much that accessing even the most basic information was difficult. It required every function to be incredibly intricate and long to access and change anything. One of our instructors taught me how to refactor my ERD and models to make my information more easily accessible. Which did mean I had to start over, but in the process, I learned so much more about how each part of the server communicated with each other part. So I am incredibly grateful for that setback. And that instructor.
 
 # Wireframes
 
