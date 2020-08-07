@@ -76,13 +76,15 @@ The way I initially created my ERD (pictured below) and my models nested my data
 * Javascript
 * Bootstrap
 * EJS
-* Express
+* Express & Express-Session
 * Node.js
 * Mongoose
-* Google People Api
-* Google Oath
+* Google People Api & Google Oath
+* Passport
 * MongoDB
 * Heroku
+* Morgan
+
 
 
 
