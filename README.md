@@ -16,33 +16,33 @@ Within my vision for the app- that being building a community in a series of emo
 
 # Wireframes
 
-![Wireframe 1](./images/Wireframe-Page1.png)
+![Wireframe 1](public/images/Wireframe-Page1.png)
 
-![Wireframe 2](./images/Wireframe-Page2.png)
+![Wireframe 2](public/images/Wireframe-Page2.png)
 
-![Wireframe 3](./images/Wireframe-Page3.png)
+![Wireframe 3](public/images/Wireframe-Page3.png)
 
 # ERD Diagrams
 
-![Initial ERD](./images/ERD-Diagram.png)
+![Initial ERD](public/images/ERD-Diagram.png)
 
-![Updated ERD](./images/Updated-ERD-Diagram.png)
+![Updated ERD](public/images/Updated-ERD-Diagram.png)
 
 # Trello Board
 
-![Trello Board](./images/Trello-Board.png)
+![Trello Board](public/images/Trello-Board.png)
 
 # App Screenshots
 
-![Login Page](./images/Login-Page.png)
+![Login Page](public/images/Login-Page.png)
 
-![Dashboard](./images/Dashboard.png)
+![Dashboard](public/images/Dashboard.png)
 
-![Edit Page](./images/Edit-Page.png)
+![Edit Page](public/images/Edit-Page.png)
 
-![Create Mood Page](./images/New-Page.png)
+![Create Mood Page](public/images/New-Page.png)
 
-![Comments Page](./images/Show-Page.png)
+![Comments Page](public/images/Show-Page.png)
 
 # Live Site
 
