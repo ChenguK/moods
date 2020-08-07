@@ -3,32 +3,22 @@ const Mood = require("../models/mood");
 
 module.exports = {
     index,
-    // findMoods,
     newPost,
     new: newMood,
-    create,
     show,
     editMood,
     update
 }
 
 function index(req, res) {
-    // var users = req.user;
     User.find({}, function (err, users) {
         res.render("moods/index", {
-            // mood,
+            mood,
             user: req.user,
             users,
+
         })
     })
-}
-
-function create(req, res) {
-    if (user.name === userId);
-    User.createUser(googleId);
-    res.render("moods");
-
-
 }
 
 function newPost(req, res) {

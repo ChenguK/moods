@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -13,65 +14,67 @@
 </head>
 
 
-<body class="container">
-    <div class="navbar-fixed">
-        <nav class="navbar navbar-light" style="background-color: lightgrey;">
-            <form class="form-inline right">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
-                    <ul>
-                        <li style="color: white">
-                            <% if (user) { %>
-                            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                            <% } else { %>
-                            <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
-                            <% } %>
-                        </li>
-                    </ul>
-                </div>
-            </form>
-        </nav>
-    </div>
+<body class="container newbg">
+    <nav class="navbar navbar-light" style="background-color: rgb(99, 133, 185);">
+        <h1>moods</h1>
+        <ul>
+            <div class="user-log">
+                <h5>Signed in as <%= user.name %></h5>
+                <li style="color: white text-style='none'">
+                    <% if (user) { %>
+                    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                    <% } else { %>
+                    <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
+                    <% } %>
+            </div>
+            </li>
+
+        </ul>
+        </div>
+        </form>
+    </nav>
+
+    <br>
+    <h4><a class="dashboardbtn" style="color: rgb(255, 255, 255);" href="/moods">Dashboard</a></h4>
     <div class="container">
-        <div class="row">
-            <div id="moods" class="col s12">
-
-                <div class="card blue-grey">
-                    <div class="card-content white-text">
-                        <a href="/moods">Dashboard</a>
-                        <div>
-                            <span class="card-title">
-                              
-                                <i class="material-icons">perm_identity</i>
-                                <span class="mood-name"><%= user.name %></span>
-                            </span>
-                        </div>
-
-
-                        <div class="card-action">
-                            <form action="/moods" method="POST">
-                                <label>Topic
-                                    <input type="text" name="title">
-                                </label>
-                                <br>
-                                <textarea type="text" name="post" class="white-text" rows="3" cols="80"
-                                    placeholder="How do you feel"></textarea>
-                                <button type="submit" class="btn btn-info">share mood</button>
-                            </form>
-                            <!-- <h4>Upload Picture</h4>
+        <div id="moods" class="col s12 contenteditable">
+            <div class="new-heading">
+                <img src="<%= user.avatarURL %>" alt="user profile" width="45px" height="45px">
+                <div class="mood-name"><b><%= user.name %></b></div>
+            </div>
+            <br>
+            <div class="form-group">
+                <form action="/moods" method="POST">
+                    <label>
+                        Topic
+                        <input class="border border-info" type="text" name="title">
+                    </label>
+                    <br>
+                    <br>
+                    <textarea class="border border-info" type="text" name="post" class="white-text" rows="3" cols="55"
+                        placeholder="How do you feel?" required></textarea>
+                    <div class="new-button">
+                        <button type="submit" class="btn btn-info">share mood</button>
+                    </div>
+                </form>
+                <!-- <h4>Upload Picture</h4>
                             <form action="/" method="POST" enctype="multipart/form-data">
                                 <input type="file" name="inputFile">
                                 <input type="submit" value="Upload file" class="btn btn-info">
                             </form> -->
-                            <!-- <
+                <!-- <
                                 % if(recentUpload) { %>
                                 <h2>Most Recent Upload:</h2>
                                 <img src="<
                                     %= recentUpload %>" alt="Recent Upload">
                               <
                                   % } %> -->
-                        </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    </div>
+    </span>
+</body>
+
+</html>

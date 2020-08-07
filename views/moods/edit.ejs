@@ -13,54 +13,48 @@
 </head>
 
 
-<body class="container">
-    <div class="navbar-fixed">
-        <nav class="navbar navbar-light" style="background-color: lightgrey;">
-            <form class="form-inline right">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
-                    <ul>
-                        <li style="color: white">
-                            <% if (user) { %>
-                            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                            <% } else { %>
-                            <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
-                            <% } %>
-                        </li>
-                    </ul>
-                </div>
-            </form>
-        </nav>
-    </div>
+<body class="container editbg">
+    <nav class="navbar navbar-light" style="background-color: rgb(99, 133, 185);">
+        <h1>moods</h1>
+        <ul>
+            <div class="user-log">
+                <h5>Signed in as <%= user.name %></h5>
+                <li style="color: white text-style='none'">
+                    <% if (user) { %>
+                    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                    <% } else { %>
+                    <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
+                    <% } %>
+            </div>
+            </li>
+
+        </ul>
+        </div>
+        </form>
+    </nav>
+
+    <h4><a class="dashboardbtn" style="color: rgb(255, 255, 255);" href="/moods">Dashboard</a></h4>
     <div class="container">
         <div class="row">
             <div id="moods" class="col s12">
-                <div class="card blue-grey">
-                    <a href="/moods">Dashboard</a>
-                    <div class="card-content white-text">
-                        <div>
-                            <span class="card-title">
-                                <h4>Edit "<%= mood.title %>"</h4>
-                                <i class="material-icons">perm_identity</i>
-                                <span class="mood-name"><%= mood.user  %></span>
-                            </span>
-                        </div>
-                        <div class="card-action">
 
-                            <form action="/moods/<%= mood._id %>?_method=PUT" method="POST">
-                                <label> Title <input value="<%= mood.title %>" type="text" name="title">
-                                </label>
-                                <br>
-                                <textarea type="text" name="text" class="white-text" rows="3"
-                                    cols="80"><%= mood.post %></textarea>
-                                <button type="submit" class="btn btn-info">Edit Post</button>
-                            </form>
+                <div class="align-content-end">
+                    <img src="<%= user.avatarURL %>" alt="user profile" width="30px" height="30px">
+                    <div class="mood-name"><b><%= user.name %></b></div>
+                    <h4>Edit "<%= mood.title %>"</h4>
+                    </span>
+                </div>
 
-                        </div>
+
+                <form action="/moods/<%= mood._id %>?_method=PUT" method="POST">
+                    <label> Title <input value="<%= mood.title %>" type="text" name="title">
+                    </label>
+                    <br>
+                    <textarea type="text" name="text" class="white-text" rows="3" cols="80"><%= mood.post %></textarea>
+                    <button type="submit" class="btn btn-info">Edit Post</button>
+                </form>
+
+            </div>
 
 
 </body>

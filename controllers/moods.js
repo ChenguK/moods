@@ -1,5 +1,6 @@
 const Mood = require("../models/mood");
 const Comment = require("../models/comment");
+const User = require("../models/user");
 
 
 
@@ -34,6 +35,7 @@ function create(req, res) {
     });
 }
 
+// function that sends the user to create a new mood
 function newPost(req, res) {
     var users = req.user;
     var mood = req.mood;
@@ -45,6 +47,7 @@ function newPost(req, res) {
     });
 };
 
+// sends the user to edit their mood
 function editPost(req, res) {
     var user = req.user;
     Mood.findById(req.params.id, function (err, mood) {
@@ -57,7 +60,7 @@ function editPost(req, res) {
     });
 }
 
-
+// function that updates the users mood
 function update(req, res) {
     Mood.findById(req.params.id, function (err, mood) {
         var user = req.user;
@@ -69,7 +72,7 @@ function update(req, res) {
     });
 }
 
-
+// deletes the user's mood
 function delPost(req, res) {
     var user = req.user;
     Mood.findById(req.params.id, function (err, mood) {
@@ -81,6 +84,7 @@ function delPost(req, res) {
     });
 }
 
+// populates the moods and comments on the show page.
 function show(req, res) {
     let user = req.user;
     Mood.findById(req.params.id)
@@ -93,7 +97,6 @@ function show(req, res) {
             }
         })
         .exec(function (err, mood) {
-            console.log(mood);
             if (!user._id) return res.redirect("/moods");
             res.render("moods/show", {
                 user,

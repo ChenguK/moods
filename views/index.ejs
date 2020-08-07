@@ -13,14 +13,11 @@
 </head>
 
 
-<body class="container">
-    <nav class="navbar navbar-light" style="background-color: lightgrey;">
-        <form class="form-inline">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+<body class="container loginpage">
+    <div class="landing">
+        <div class="login" style="background-color: rgb(99, 133, 185);">
             <ul>
+
                 <li text-style="none" style="color: white">
                     <% if (user) { %>
                     <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
@@ -29,11 +26,10 @@
                     <% } %>
                 </li>
             </ul>
-            </div>
-        </form>
-    </nav>
-    <h1>Welcome to moods!</h1>
-    <p>How's your mood today?</p>
+            </form>
+        </div>
+    </div>
+
 
 </body>
 

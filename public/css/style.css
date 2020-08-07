@@ -2,7 +2,183 @@
     box-sizing: border-box;
 }
 
+body {
+    margin-top: 40px;
+    background-size: cover;
+}
+
 ul,
 li {
     list-style: none;
+}
+
+ul.show-comments {
+    margin-left: -30px;
+    margin-bottom: 20px;
+}
+
+nav.navbar {
+    background-color: rgb(202, 202, 202);
+    width: 800px;
+    height: 80px;
+    color: white;
+    font-size: large;
+    margin-bottom: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.name-log {
+    color: white;
+}
+
+.card {
+    background-color: rgb(105, 167, 167);
+    width: 800px;
+    padding: 10px;
+    display: flex;
+    margin: 1.6rem;
+    border-radius: 10px;
+    justify-content: space-between;
+    color: white;
+    font-size: 1.75rem;
+}
+
+.show {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+
+}
+
+#showCommentName,
+.showcomcomment {
+    display: inline-flex;
+
+
+}
+
+h1 {
+    font-family: 'Satisfy', cursive;
+    vertical-align: text-top;
+    justify-self: center;
+    justify-content: space-between;
+    font-size: 80px;
+    margin-top: 0px;
+}
+
+.loginpage {
+    background-image: url("/images/loginpage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.landing {
+    height: 100vh;
+    align-content: center;
+    padding-top: 450px;
+    padding-left: 200px;
+}
+
+.login {
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
+
+
+.newbg {
+    background-image: url("/images/new-back.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.showbg {
+    background-image: url("/images/showbg.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.editbg {
+    background-image: url("/images/editbg.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.moodindexbg {
+    background-image: url("/images/moodindexbg.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content,
+div.card-title {
+    color: white;
+}
+
+.comment-link {
+    font-size: 1.5rem;
+}
+
+#moods {
+    background-color: rgba(255, 255, 255, .8);
+    margin-top: 40px;
+    border-radius: 30px;
+    width: 800px;
+    padding: 40px;
+    justify-self: center;
+    font-size: large;
+}
+
+html {
+    height: 100vh;
+}
+
+ul.collection {
+    margin-left: -35px;
+}
+
+a {
+    color: white;
+}
+
+div.icons,
+.new-heading {
+    display: inline-flex;
+}
+
+.mood-header {
+    display: inline-block;
+    padding-top: -5px;
+}
+
+.indeximg {
+    vertical-align: top;
+}
+
+.new-button {
+    margin-left: 418px;
+}
+
+.dashboardbtn {
+    font-size: 20px;
+    color: white;
+}
+
+.dashboardbtn:hover {
+    background-color: rgb(99, 133, 185);
 }
