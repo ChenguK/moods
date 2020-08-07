@@ -18,7 +18,7 @@ Within my vision for the app- that being building a community in a series of emo
 
 ![Wireframe 1](public/images/Wireframe-Page1.png)
 
-![Wireframe 2](public/images/Wireframe-Page2.png)
+![Wireframe 2](public/images/Wireframe-NewPage.png)
 
 ![Wireframe 3](public/images/Wireframe-Page3.png)
 
