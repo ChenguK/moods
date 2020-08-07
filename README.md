@@ -66,7 +66,7 @@ The way I initially created my ERD (pictured below) and my models nested my data
 
 # Live Site
 
-[Link to App](https://moodsblog.herokuapp.com/ "title" target="_blank")to open app in browser.
+[Link to App](https://moodsblog.herokuapp.com/"title"target="_blank")to open app in browser.
 
 
 # Technologies
