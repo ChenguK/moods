@@ -13,65 +13,102 @@
 </head>
 
 
-<body class="container">
-    <div class="navbar-fixed">
-        <nav class="navbar navbar-light" style="background-color: lightgrey;">
-            <form class="form-inline right">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
-                    <ul>
-                        <li style="color: white">
-                            <% if (user) { %>
-                            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                            <% } else { %>
-                            <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
-                            <% } %>
-                        </li>
-                    </ul>
-                </div>
-            </form>
-        </nav>
-    </div>
-    <a href="/moods">Dashboard</a>
-    <br>
-    <br>
+<body class="container showbg">
+    <nav class="navbar navbar-light" style="background-color: rgb(99, 133, 185);">
+        <h1>moods</h1>
+        <ul>
+            <div class="user-log">
+                <h5>Signed in as <%= user.name %></h5>
+                <li style="color: white text-style='none'">
+                    <% if (user) { %>
+                    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                    <% } else { %>
+                    <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
+                    <% } %>
+            </div>
+            </li>
 
-    <div><b><%= mood.userId %></b></div>
-    <span class="mood-name"><%= mood.userId %></span>
-    <br>
-    <h4><u><%= mood.title %></u></h4>
-    <div><%= mood.post %></div>
-    <%if (mood.user[0]._id.equals(user && user._id)) { %>
-    <a href="/moods/<%= mood._id %>/edit">Edit Post</a>
-    <!-- <
+        </ul>
+        </div>
+        </form>
+    </nav>
+
+
+
+    <h4><a class="dashboardbtn" style="color: rgb(255, 255, 255);" href="/moods">Dashboard</a></h4>
+    <div class="container">
+    </div>
+
+    <div id="moods" class="contenteditable">
+        <div><b><%= mood.user[0].name %></b></div>
+        <img src="<%= mood.user[0].avatarURL %>" alt="user profile" width="50px" height="50px">
+        <div class="mood-name"><%= mood.user[0].name %></div>
+        <br>
+        <h4><u><%= mood.title %></u></h4>
+        <div><%= mood.post %></div>
+        <%if (mood.user[0]._id.equals(user && user._id)) { %>
+        <a href="/moods/<%= mood._id %>/edit">✏️</a>
+        <!-- <
         % if(recentUpload) { %>
         <h2>Most Recent Upload:</h2>
         <img src="<
             %= recentUpload %>" alt="Recent Upload"> -->
-    <% } %>
-
-    <!--<div><img src="<
-        %= image %>"></div> -->
-    <!-- < % } %> -->
-    <br>
-    <div class="comments">
-        <form action="/moods/<%= mood._id%>/comments" method="POST">
-            <label>Comments
-                <input type="text" name="comment">
-                <input type="submit">
-            </label>
-        </form>
-        <ul>
-            <% if(comments.length) { %>
-            <% comments.forEach(c => { %>
-            <li><%= c.userId.name %> <%= c.comment %></li>
-            <% }) %>
-        </ul>
-        <% } else { %>
-        <h3> No Comments Yet</h3>
         <% } %>
+
+        <!--<div><img src="<
+        %= image %>"></div> -->
+        <!-- < % } %> -->
+        <div class="comments">
+            <form action="/moods/<%= mood._id%>/comments" method="POST">
+                <label style="color: black">Comments
+                    <input type="text" name="comment">
+                    <input class="btn btn-info" type="submit">
+                </label>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+
+    <ul class="show-comments">
+
+        <% if(comments.length) { %>
+
+
+        <% comments.forEach(c => { %>
+        <div class="card">
+            <div class="show">
+                <div class="card-content">
+
+
+                    <li>
+                        <div class="showcomcomment">
+
+
+                            <img src="<%= c.userId.avatarURL %>" alt="user profile" width="30px" height="30px">&nbsp;
+                            <%= c.comment %>
+                        </div>
+
+                        <div id="showCommentName">
+                            <%= c.userId.name %>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <% }) %>
+        </li>
+
+
+
+
+    </ul>
+
+
+    <% } else { %>
+    <h3> No Comments Yet</h3>
+    <% } %>
     </div>

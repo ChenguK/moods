@@ -16,10 +16,12 @@ passport.use(new GoogleStrategy({
             if (user) {
                 return cb(null, user);
             } else {
+
                 // new student, create and add them to our database!!!
                 const newUser = new User({
                     name: profile.displayName,
-                    emaile: profile.emails[0].value,
+                    email: profile.emails[0].value,
+                    avatarURL: profile.photos[0].value,
                     googleId: profile.id
                 })
                 newUser.save(function (err) {

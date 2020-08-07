@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -13,19 +14,20 @@
 </head>
 
 
-<body class="container">
+<body class="container moodindexbg">
     <div class="navbar-fixed">
-        <nav class="navbar navbar-light" style="background-color: lightgrey;">
-            <form class="form-inline">
-            </form>
+        <nav class="navbar navbar-light" style="background-color: rgb(99, 133, 185);">
+            <h1>moods</h1>
             <ul>
-                <h2>Welcome <%= user.name %>!</h2>
-                <li style="color: white text-style='none'">
-                    <% if (user) { %>
-                    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                    <% } else { %>
-                    <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
-                    <% } %>
+                <div class="user-log">
+                    <h5>Welcome <%= user.name %>!</h5>
+                    <li style="color: white text-style='none'">
+                        <% if (user) { %>
+                        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                        <% } else { %>
+                        <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
+                        <% } %>
+                </div>
                 </li>
 
             </ul>
@@ -33,54 +35,42 @@
     </form>
     </nav>
     </div>
-    <div class="container">
-        <div class="row card">
-            <h3>How's your mood today?</h3>
+    <h3>How's your mood today?</h3>
 
-            <h4><a href="/moods/new">Click here</a> to share!</h4>
-            <div id="moods" class="col s12">
-                <% moods.forEach(function(mood) { %>
-                <div class="card blue-grey">
-                    <div class="card-content white-text">
-                        <div>
-                            <span class="card-title">
-                                <i class="material-icons">perm_identity</i>
-                                <span class="mood-name"><%= mood.user[0].name %></span>
-                            </span>
-                        </div>
-                        <ul class="collection">
-                            <% mood.user.forEach(function(post) { %>
+    <h4><a class="dashboardbtn" style="color: rgb(255, 255, 255);" href="/moods/new">Click here</a> to share!</h4>
+    <div id="moods-index">
 
-                            <li>
-                                <h5><%= mood.title %></h5><a href="/moods/<%= mood._id%>">Comments</a>
-                                <%if (mood.user[0]._id.equals(user && user._id)) { %>
-                                <form action="/moods/<%= mood._id %>?_method=DELETE" method="POST">
-                                    <small><button type="submit" style=background-color:red>
-                                            X
-                                        </button></small></form><a href="moods/<%= mood._id %>/edit">✏️</a>
-                                <% } %>
-
-                            </li>
-                            <% }) %>
-                        </ul>
-
-                        <!-- Add Dynamic UI form below this line -->
-                        <!-- if the user is logged and that user matches the id of the user, then they can add a fact about themselves.-->
-                        <%if (mood._id.equals(user && user._id)) { %>
-                        <div class=" card-action">
-                            <form action="/posts" method="POST">
-                                <textarea type="text" name="text" class="white-text" rows="3" cols="80"
-                                    placeholder="How do you feel"></textarea>
-                                <button type="submit" class="btn btn-info">share mood</button>
-                            </form>
-                        </div>
-                        <% } %>
-
-                    </div>
+        <br>
+        <% moods.forEach(function(mood) { %>
+        <div class="card">
+            <div class="mood-title">
+                <img class="indeximg" src="<%= mood.user[0].avatarURL %>" alt="user profile" width="50px" height="50px">
+                <div class="mood-header">
+                    <div class="mood-name"><%= mood.user[0].name %></div>
+                    <ul class="collection">
+                        <li>
+                            <h5><u><%= mood.title %></u></h5>
                 </div>
-                <% }) %>
             </div>
+            <div class="card-content">
+                <div class="icons">
+                    <%if (mood.user[0]._id.equals(user && user._id)) { %>
+                    <a href="moods/<%= mood._id %>/edit">✏️</a> &nbsp;&nbsp;
+                    <form action="/moods/<%= mood._id %>?_method=DELETE" method="POST">
+                        <small><button type="submit" style=background-color:red>
+                                X
+                            </button></small></form>
+                    <% } %>
+                </div>
+                <br>
+                <a class="comment-link" href="/moods/<%= mood._id%>">Comments</a>
+            </div>
+            </li>
+            </ul>
         </div>
+    </div>
+    <% }) %>
+    </div>
     </div>
 </body>
 
