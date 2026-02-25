@@ -8,7 +8,7 @@ module.exports = {
     create,
 };
 
-
+// creates the comments and attaches it to the mood and the commenter's user information
 async function create(req, res) {
     try {
         const data = {
@@ -25,13 +25,15 @@ async function create(req, res) {
     }
 }
 
+// showing the comments and the user attached.
+
 function show(req, res) {
     let user = req.user;
     if (!user) return res.redirect("/moods");
     Mood.findById(req.params.id).populate({
         path: "comments",
         populate: {
-            path: "userId"
+            path: "userId",
         }
     }).exec(function (err, mood) {
         if (err) return res.redirect("/moods");

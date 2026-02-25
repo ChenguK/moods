@@ -39,7 +39,7 @@ app.use(express.urlencoded({
 }));
 // TODO Add session middleware here
 app.use(session({
-    secret: "SEIRRocks!",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));

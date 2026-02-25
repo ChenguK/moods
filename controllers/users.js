@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Mood = require("../models/mood");
+const user = require("../models/user");
 
 module.exports = {
     index,
@@ -7,13 +8,13 @@ module.exports = {
     new: newMood,
     show,
     editMood,
-    update
+    update,
 }
 
 function index(req, res) {
     User.find({}, function (err, users) {
         res.render("moods/index", {
-            mood,
+            Mood,
             user: req.user,
             users,
 

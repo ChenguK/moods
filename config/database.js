@@ -1,13 +1,5 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.DATABASE_URL || "mongodb://localhost/moods", {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-});
-
-const db = mongoose.connection;
-// database connection event
-db.on("connected", function () {
-    console.log(`Mongoose connected to:${db.host}:${db.port}`);
-});
+mongoose.connect(process.env.DATABASE_URL)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));

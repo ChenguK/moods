@@ -50,6 +50,7 @@ function newPost(req, res) {
 // sends the user to edit their mood
 function editPost(req, res) {
     var user = req.user;
+    // const mood = await Mood.findById(req.params.id);
     Mood.findById(req.params.id, function (err, mood) {
         if (!user.equals(req.user._id)) return res.redirect("/moods");
         res.render("moods/edit", {

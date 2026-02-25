@@ -99,9 +99,9 @@ In the future, I would like to add in the functions that I set out to include:
 
 1. I would like the user to be able to add a gif to their post to exemplify their mood. There just wasn't enough to look into that option.
 
-2. I would like the user to be able to upload a picture to exemplify their experience if they feel the community might need that to understand their situation
+2. . I would like the user to be able to upload a picture to exemplify their experience if they feel the community might need that to understand their situation. I wrote the code for this feature. However, when restarting the server to check functionality, I was unable to load the dashboard page. Apparently with the extra functions, the server was unable to find the user router to get to the user model so it said "user" was undefined. I do intend on going back to add this feature in at a later date.
 
-3. I would also like the user to be able to change the font of their post. If another font works better to help them feel heard, I want them to be able to use it. 
+3. I would also like the user to be able to change the font of their post. If another font, alignment, emphasis or color works better to help them feel heard, I want them to be able to use it. 
 
 # Authors
  Chengusoyane Kargbo - *Initial work* - [ChenguK](https://github.com/ChenguK)
